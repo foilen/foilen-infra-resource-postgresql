@@ -30,9 +30,11 @@
           "b" : 70000
         } ],
         "copyWhenStartedPathAndContentFiles" : [ ],
-        "environments" : { },
+        "environments" : {
+          "AUTH_METHOD" : "md5"
+        },
         "executeWhenStartedCommands" : [ ],
-        "from" : "foilen/fcloud-docker-postgresql:11.1-1",
+        "from" : "foilen/fcloud-docker-postgresql:11.1-2",
         "hostToIpMapping" : [ ],
         "portsEndpoint" : {
           "5432" : "POSTGRESQL_TCP"
@@ -104,13 +106,15 @@
     } ],
     "tags" : [ ],
     "content" : {
+      "authMethod" : "md5",
       "description" : "null",
       "meta" : { },
       "name" : "user_db",
       "resourceCategory" : "DATABASE",
       "resourceDescription" : "null",
       "resourceName" : "user_db",
-      "rootPassword" : "abc"
+      "rootPassword" : "abc",
+      "version" : "11.1-2"
     }
   }, {
     "resource" : "UnixUser | user1 | /home/user1",

@@ -55,6 +55,8 @@ public class PostgreSqlEditorTest extends AbstractIPPluginTest {
         // PostgreSqlServerEditor
         Map<String, String> postgreSqlServerEditorForm = new HashMap<>();
         postgreSqlServerEditorForm.put(PostgreSqlServer.PROPERTY_NAME, "user_db");
+        postgreSqlServerEditorForm.put(PostgreSqlServer.PROPERTY_VERSION, "11.1-2");
+        postgreSqlServerEditorForm.put(PostgreSqlServer.PROPERTY_AUTH_METHOD, "md5");
         postgreSqlServerEditorForm.put(PostgreSqlServer.PROPERTY_ROOT_PASSWORD, "abc");
         postgreSqlServerEditorForm.put("unixUser", unixUserId);
         postgreSqlServerEditorForm.put("machine", machineId);

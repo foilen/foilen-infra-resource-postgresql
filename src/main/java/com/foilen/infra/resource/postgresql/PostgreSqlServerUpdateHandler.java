@@ -67,7 +67,7 @@ public class PostgreSqlServerUpdateHandler extends AbstractFinalStateManagedReso
 
             IPApplicationDefinition applicationDefinition = application.getApplicationDefinition();
 
-            applicationDefinition.setFrom("foilen/fcloud-docker-postgresql:11.1-1");
+            applicationDefinition.setFrom("foilen/fcloud-docker-postgresql:" + postgreSqlServer.getVersion());
 
             applicationDefinition.addService("app", "/postgresql-start.sh");
             IPApplicationDefinitionAssetsBundle assetsBundle = applicationDefinition.addAssetsBundle();
@@ -76,6 +76,9 @@ public class PostgreSqlServerUpdateHandler extends AbstractFinalStateManagedReso
             applicationDefinition.addPortEndpoint(5432, "POSTGRESQL_TCP");
 
             applicationDefinition.setRunAs(unixUser.getId());
+
+            // Auth method
+            applicationDefinition.getEnvironments().put("AUTH_METHOD", postgreSqlServer.getAuthMethod());
 
             // Data folder
             String baseFolder = unixUser.getHomeFolder() + "/postgresql/" + serverName;

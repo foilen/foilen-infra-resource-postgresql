@@ -32,6 +32,8 @@ public class PostgreSqlServer extends AbstractIPResource implements Comparable<P
 
     public static final String PROPERTY_NAME = "name";
     public static final String PROPERTY_DESCRIPTION = "description";
+    public static final String PROPERTY_VERSION = "version";
+    public static final String PROPERTY_AUTH_METHOD = "authMethod";
     public static final String PROPERTY_ROOT_PASSWORD = "rootPassword";
 
     // Basics
@@ -39,14 +41,17 @@ public class PostgreSqlServer extends AbstractIPResource implements Comparable<P
     private String description;
 
     // Settings
+    private String version;
+    private String authMethod = "scram-sha-256";
     private String rootPassword;
 
     public PostgreSqlServer() {
     }
 
-    public PostgreSqlServer(String name, String description, String rootPassword) {
+    public PostgreSqlServer(String name, String description, String version, String rootPassword) {
         this.name = name;
         this.description = description;
+        this.version = version;
         this.rootPassword = rootPassword;
     }
 
@@ -55,6 +60,10 @@ public class PostgreSqlServer extends AbstractIPResource implements Comparable<P
         return ComparisonChain.start() //
                 .compare(this.name, o.name) //
                 .result();
+    }
+
+    public String getAuthMethod() {
+        return authMethod;
     }
 
     public String getDescription() {
@@ -84,6 +93,14 @@ public class PostgreSqlServer extends AbstractIPResource implements Comparable<P
         return rootPassword;
     }
 
+    public String getVersion() {
+        return version;
+    }
+
+    public void setAuthMethod(String authMethod) {
+        this.authMethod = authMethod;
+    }
+
     public void setDescription(String description) {
         this.description = description;
     }
@@ -94,6 +111,10 @@ public class PostgreSqlServer extends AbstractIPResource implements Comparable<P
 
     public void setRootPassword(String rootPassword) {
         this.rootPassword = rootPassword;
+    }
+
+    public void setVersion(String version) {
+        this.version = version;
     }
 
 }
